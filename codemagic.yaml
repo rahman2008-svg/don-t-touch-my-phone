@@ -2,15 +2,21 @@ workflows:
   android-release:
     name: Android Release
 
+    max_build_duration: 60
+
     environment:
       java: 17
 
-      android_signing:
-        - your_keystore
+      vars:
+        KEYSTORE_PATH: /tmp/keystore.jks
+        STORE_PASSWORD: Encrypted(STORE_PASSWORD)
+        KEY_PASSWORD: Encrypted(KEY_PASSWORD)
 
     scripts:
       - chmod +x gradlew
+      - cp $CM_KEYSTORE /tmp/keystore.jks
       - ./gradlew assembleRelease
 
     artifacts:
       - app/build/outputs/apk/release/*.apk
+      - app/build/outputs/bundle/release/*.aab
