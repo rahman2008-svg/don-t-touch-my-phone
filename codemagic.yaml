@@ -1,23 +1,16 @@
 workflows:
   android-release:
-    name: Android Release Build
-
-    max_build_duration: 60
+    name: Android Release
 
     environment:
       java: 17
 
+      android_signing:
+        - your_keystore
+
     scripts:
       - chmod +x gradlew
-      - ./gradlew clean
       - ./gradlew assembleRelease
 
     artifacts:
-      - app/build/outputs/apk/**/*.apk
-      - app/build/outputs/bundle/**/*.aab
-      - app/build/reports/**/*
-
-    cache:
-      cache_paths:
-        - ~/.gradle/caches
-        - ~/.gradle/wrapper
+      - app/build/outputs/apk/release/*.apk
