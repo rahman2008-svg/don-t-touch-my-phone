@@ -1,0 +1,6 @@
+{
+  "name": "Don't Touch My Phone",
+  "description": "Full featured security clone app that detects unauthorized phone movement, pocket removal, charging unplugged, and takes photos of intruders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
