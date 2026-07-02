@@ -1,6 +1,6 @@
 workflows:
-  android-workflow:
-    name: Android Build
+  android-release:
+    name: Android Release Build
 
     max_build_duration: 60
 
@@ -9,8 +9,15 @@ workflows:
 
     scripts:
       - chmod +x gradlew
+      - ./gradlew clean
       - ./gradlew assembleRelease
 
     artifacts:
-      - app/build/outputs/**/*.apk
-      - app/build/outputs/**/*.aab
+      - app/build/outputs/apk/**/*.apk
+      - app/build/outputs/bundle/**/*.aab
+      - app/build/reports/**/*
+
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
